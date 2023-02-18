@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+         // 배열(array) : 여러개의 데이터를 순서대로 관리하는 방법
+
+        let friends = ['철수', '영희', '바둑이', '나비'];
+
+        console.log(friends[3]);
+
+        // 데이터 삽입
+        friends.push('도니');
+        console.log(friends);
+
+        // 데이터 변경
+        friends[3] = '캉캉';
+        console.log(friends);
+
+        // 데이터 삭제
+        // 1. pop - 배열에서 마지막 요소를 제거
+        friends.pop();
+        console.log(friends);        
+
+        // 2. splice - 배열공간자체를 제거
+        // splice(~부터(인덱스), 삭제할 개수)
+        friends.splice(0, 2);
+        console.log(friends);
+        
+        
+        // 교체도 가능
+        // splice(~부터, 변경할 개수, 변경할 데이터)
+        // friends.splice(2, 1, '도니');
+        // console.log(friends);
+
+    </script>
+</body>
+</html>

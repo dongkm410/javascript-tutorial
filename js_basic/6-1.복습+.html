@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 변수: 데이터를 저장하는 공간
+        var varName = 123; // =: 저장하다, 할당하다
+        
+        // scope(유효범위) <- let과 const의 등장원인
+
+        if (true) {
+            var abc = "abc";
+            //let abc = "abc";
+            //const abc = "abc";
+        }
+
+        console.log(abc);
+
+        //지역변수(local) : { } 안에서 선언된 변수
+        //전역변수(global) : { } 밖에 선언된 변수
+
+        //자료형, 데이터타입
+        /*
+            문자형, 숫자형, 논리형
+            
+            null(명시적)
+            undefinded(자연발생 너낌)
+            NaN(연산오류를 표시하는 메시지) = 숫자형
+        */
+
+        let k = true;
+        console.log(!k); //false
+        console.log(!!k); //true
+
+        /*
+            조건문 : 조건식의 판별 결과에 따라 실행 될 코드블록을 결정
+            조건식 : 참과 거짓으로 판변가능한 식
+        */
+
+        /*
+            예제
+            prompt를 통해 휴대전화 뒷자를 물어보고
+            1111 : 맥북 프로당첨
+            2222 : 맥북 에어 당첨
+            3333 : 아이패드 프로
+            4444 : 아이폰 14프로
+            그외 : 꽝
+        */
+
+
+        let phoneNum = prompt('휴대전화 뒷자리(4자리)를 입력해주세요');
+
+        // if(phoneNum == 1111) {
+        //     alert('맥북 프로 당첨!');
+        // } else if(phoneNum == 2222) {
+        //     alert('맥북 에어 당첨!');
+        // } else if(phoneNum == 3333) {
+        //     alert('아이패드 당첨!');
+        // } else if(phoneNum == 4444) {
+        //     alert('아이폰 14 당첨!');
+        // } else {
+        //     alert('꽝!');
+        // }
+        
+        console.log(phoneNum);
+
+        /*
+            표현식의 대조 결과에 따라 실행 될 코드를 결정
+            표현식 : 일반적인 식
+        */
+
+        /*
+            switch(표현식) {
+                case 표현식1 : 표현식이 표현식1에 해당될 경우
+                break;
+                case 표현식2 : ...
+                break;
+                case 표현식n : ...
+                break;
+                default : 어느 표현식에도 해당되지 않을 경우
+            }
+        */
+
+
+        // switch(phoneNum) {
+        //     case '1111' : alert('맥북 프로 당첨!');
+        //     break;
+        //     case '2222' : alert('맥북 에어 당첨!');
+        //     break;
+        //     case '3333' : alert('아이패드 당첨!');
+        //     break;
+        //     case '4444' : alert('아이폰 14 당첨!');
+        //     default : alert('꽝!');
+        // }
+
+        phoneNum = Number(phoneNum);
+
+        // switch(phoneNum) {
+        //     case 1111 : alert('맥북 프로 당첨!');
+        //     break; //코드블록을 종결시킴
+        //     case 2222 : alert('맥북 에어 당첨!');
+        //     break;
+        //     case 3333 : alert('아이패드 당첨!');
+        //     break;
+        //     case 4444 : alert('아이폰 14 당첨!');
+        //     default : alert('꽝!');
+        // }
+
+        // console.log(typeof(phoneNum));
+
+        let result;
+
+        switch(phoneNum) {
+            case 1111 : result = '맥북 프로 당첨!';
+            break; //코드블록을 종결시킴
+            case 2222 : result = '맥북 에어 당첨!';
+            break;
+            case 3333 : result = '아이패드 당첨!';
+            break;
+            case 4444 : result = '아이폰 14 당첨!';
+            break;
+        }
+
+        // if(result) {
+        //     alert(`축하합니다! ${result}에 당첨되었습니다.`);
+        // } else {
+        //     alert('꽝! 다음 기회에...');
+        // }
+
+        result ? alert(`축하합니다! ${result}에 당첨되었습니다.`) : alert('꽝! 다음 기회에...');
+
+    </script>
+</body>
+</html>

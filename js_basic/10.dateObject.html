@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="timer"></div>
+
+    <script>
+
+    function timer() {
+
+        //new 연산자 : 객체를 만들어내는 연산자
+
+        // let a = new Array;
+        // console.log(a);
+
+        let now = new Date();
+        // console.log(now);
+
+        let year = now.getFullYear();
+        // console.log(year);
+
+        let month = now.getMonth();
+        let _date = now.getDate();
+        let day = now.getDay();
+        let hour = now.getHours();
+        let min = now.getMinutes();
+        let sec = now.getSeconds();
+
+        // console.log(year, month, _date, day, hour, min, sec);
+
+        // if (month == 1) {
+        //     month =  2;  
+        // } else if () {
+
+        // }
+
+        // switch(month) {
+        //     case 0 : month = '1';
+        //     break;
+        //     case 1 : month = '2';
+        //     break;
+        //     case 2 : month = '3';
+        //     break;
+        //     case 3 : month = '4';
+        //     break;
+        //     case 4 : month = '5';
+        //     break;
+        //     case 5 : month = '6';
+        //     break;
+        //     case 6 : month = '7';
+        //     break;
+        //     case 7 : month = '8';
+        //     break;
+        //     case 8 : month = '9';
+        //     break;
+        //     case 9 : month = '10';
+        //     break;
+        //     case 10 : month = '11';
+        //     break;
+        //     case 11 : month = '12';
+        //     break;
+        // }
+
+        // switch(day) {
+        //     case 0 : day = '일';
+        //     break;
+        //     case 1 : day = '월';
+        //     break;
+        //     case 2 : day = '화';
+        //     break;
+        //     case 3 : day = '수';
+        //     break;
+        //     case 4 : day = '목';
+        //     break;
+        //     case 5 : day = '금';
+        //     break;
+        //     case 6 : day = '토';
+        //     break;
+        //     case 7 : day = '일';
+        // }
+
+        const week = ['일', '월', '화', '수', '목', '금', '토'];
+
+        // 시,분,초가 한 자리수로 출력 될 경우 -> 두자리수로
+        // 24시간제 -> 12시간제
+
+  
+        if(hour > 13) {
+            hour -= 12;
+
+            if(hour < 10) {
+                hour = '0' + hour;
+                // console.log(hour);
+            }
+
+        }
+
+        if(min < 10) {
+            min = '0' + min;
+            // console.log(min);
+        }
+
+        if(sec < 10) {
+            sec = '0' + sec;
+            // console.log(sec);
+        }
+
+  
+        //document.write(`${year}년 ${month + 1}월 ${_date}일 ${week[day]}요일 ${hour}시 ${min}분 ${sec}초 <hr>`);
+        document.querySelector('.timer').innerText = `${year}년 ${month + 1}월 ${_date}일 ${week[day]}요일 ${hour}시 ${min}분 ${sec}초`;
+
+
+    } // function fin
+
+    setInterval(timer, 500); // 1초일 경우, 0.9초의 오차발생 가능성, 너무 줄이면 성능문제.. 적당히 0.5초 ㄱㄱ
+    clock(); // 페이지가 로드되자 마자(빈화면 공백방지, 1초 후에 시작되기 때문에)
+
+
+    </script>
+</body>
+</html>
