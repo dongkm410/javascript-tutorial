@@ -26,7 +26,7 @@ bgBtn.addEventListener('click', () => {
 hexBtn.addEventListener('click', () => {
   let hexColor = '#';
   for (let i = 0; i < 6; i++) {
-    hexColor += hex[getHexNum()];
+    hexColor += hex[getHexNum()]; //hexcolor = hexColor(#) + (배열[인덱스] *6번)
   }
   document.body.style.backgroundColor = hexColor;
   color.textContent = hexColor;
