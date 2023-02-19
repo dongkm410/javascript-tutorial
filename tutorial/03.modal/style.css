@@ -1,6 +1,6 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -10,8 +10,8 @@
   padding: 30px 0;
 }
 
-.container > div {
-  padding: 30px 0px;
+.container div {
+  margin: 30px 0;
 }
 
 .dimm {
@@ -24,25 +24,21 @@
   display: none;
 }
 
-.dimm.open {
-  display: block;
-}
-
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
   transform: translate(-50%, -50%);
+  width: 400px;
   padding: 2rem 3rem;
   background-color: #fff;
   display: none;
 }
 
-.modal.open {
+.open {
   display: block;
 }
 
 .modal p {
-  margin: 16px;
+  margin: 16px 0;
 }
