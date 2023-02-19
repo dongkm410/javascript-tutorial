@@ -19,7 +19,7 @@ a {
 }
 
 .content.active {
-  filter: blur(10px);
+  filter: blur(20px);
 }
 
 .content h2 {
@@ -60,5 +60,5 @@ a {
 
 .modal.active {
   top: 50%;
-  opacity: 0;
+  opacity: 1;
 }
