@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <h1>logo</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+          asperiores est ex cupiditate laudantium omnis.
+        </p>
+        <span>dongkyungmin@gmail.com</span>
+      </div>
+      <div class="right">
+        <div class="inner">
+          <h2>메일 보내기</h2>
+          <form id="contact-form">
+            <input type="hidden" name="contact_number" />
+            <input type="hidden" name="subject" value="안녕하세요" />
+            <label>이름</label>
+            <input type="text" placeholder="이름" name="name" />
+            <label>이메일</label>
+            <input type="email" placeholder="이메일" name="email" />
+            <label>내용</label>
+            <textarea
+              name="message"
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="내용을 입력해주세요"
+            ></textarea>
+            <button type="submit">보내기</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init('Xxi3yAxY7oGSiMurU');
+      })();
+    </script>
+    <script src="./app.js"></script>
+  </body>
+</html>
