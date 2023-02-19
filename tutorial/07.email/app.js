@@ -4,6 +4,8 @@
 // emailjs.send("contact_service","contact_form", this);
 
 const form = document.querySelector('#contact-form');
+const dimm = document.querySelector('.dimm');
+const modal = document.querySelector('.modal');
 
 function sendEmail() {
   form.addEventListener('submit', function (event) {
@@ -11,9 +13,11 @@ function sendEmail() {
     // generate a five digit number for the contact_number variable
     this.contact_number.value = (Math.random() * 100000) | 0;
     // these IDs from the previous steps
+    dimm.classList.add('active');
     emailjs.sendForm('service_mikrrus', 'template_ejk9wsj', this).then(
       function () {
         console.log('SUCCESS!');
+        modal.classList.add('active');
       },
       function (error) {
         console.log('FAILED...', error);
