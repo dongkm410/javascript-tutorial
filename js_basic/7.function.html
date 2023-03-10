@@ -1,101 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>function</title>
+  </head>
+  <body>
     <script>
-        //함수: 기능을 저장하는 공간 -> 재사용
+      //함수: 기능을 저장하는 공간 -> 재사용이 가능하도록 하는 것
 
-        /*
-            function 함수이름(매개변수) {
-                함수가 실행되면 일괄적으로 실행 될 코드블록
-            } -> 함수의 선언
+      /*
+        function 함수이름(매개변수) {
+            함수가 실행되면 일괄적으로 실행 될 코드블록
+        } -> 함수의 선언
 
-            함수이름(); -> 함수의 실행
+        함수이름(); -> 함수의 실행(호출)
         */
 
-        // 함수이름은 동사형으로 작성하는 것이 좋음!
-        // sayHello, checkAuth, playSlider
-        // 변수(명사)와 구분되어 직관적임, 기능도 한번에 파악가능
+      // 함수이름은 동사형으로 작성하는 것을 권장
+      // sayHello, checkAuth, playSlider
+      // 변수(명사)와 구분되어야 직관적이기 때문, 기능도 한번에 파악가능
 
-        // function sayHello(user) {
-        //     document.write(`${user}님, 안녕하세요! <br>`);
-        //     document.write('반갑습니다!');
-        // }
+      function sayHello(user) {
+        document.write(`${user}님, 안녕하세요! <br>`);
+        document.write('반갑습니다!');
+      }
 
-        // let user = prompt('이름을 입력해주세요');
-        // sayHello(user);
+      // let user = prompt('이름을 입력해주세요');
+      // sayHello(user);
 
-        //서명기능 만들기
+      // 문제 : 서명기능 만들기
 
-        /*
-            이름 : ㅇㅇㅇ
-            부서 : ㅇㅇ팀
-            직책 : ㅇㅇ
-        */
+      /*
+        이름 : ㅇㅇㅇ
+        부서 : ㅇㅇ팀
+        직책 : ㅇㅇ
+      */
 
-        // let name = prompt('이름을 입력해주세요');
-        // let depart = prompt('부서을 입력해주세요');
-        // let posi = prompt('직책을 입력해주세요');
+      // let name = prompt('이름을 입력해주세요');
+      // let depart = prompt('부서을 입력해주세요');
+      // let posi = prompt('직책을 입력해주세요');
 
-        function printSign(name, depart, posi) {
-            document.write(`
+      function printSign(name, depart, posi) {
+        document.write(`
             이름 : ${name} <hr>
             부서 : ${depart}팀 <hr>
             직책 : ${posi} <hr>
             `);
-        }
+      }
 
-        printSign('경민', 'UI/UX', '팀장');
+      printSign('경민', 'UI/UX', '사원');
 
-        // 함수 선언 방법
-        // 1. 선언형
-        function fn1() {
+      // 함수 선언 방법
+      // 1. 선언형
+      function fn1() {}
 
-        }
+      // 2. 할당형 : 변수에 익명함수를 저장하는 형태
+      let fn2 = function () {
+        console.log('변수에 할당된 형태의 함수');
+      };
 
-        // 2. 할당형 : 변수에 익명함수를 저장하는 형태 -> 요즘 좀 많이 씀?
-        let fn2 = function() {
-            console.log('변수에 할당된 형태의 함수')
-        }
+      fn2(); //변수명으로 호출
 
-        fn2();
+      // 3. 즉시실행함수 : runtime(처음js가실행되는시점)에서 호출없이 실행되는 함수
 
-        // 3. 즉시실행함수 : runtime(처음js가실행되는시점)에서 호출없이 실행되는 함수
+      (function () {
+        console.log('호출없이 바로 실행되는 함수');
+      })();
 
-        (function(){
-            console.log('호출없이 바로 실행되는 함수');
-        }())
+      // (함수)();
+      // (function(){})();
 
-        //  함수     ()
-        // (function(){}())
+      // 4. 화살표함수(es2015) :
 
-        // 4. 화살표함수(es2015) :
-        let fn3 = (arg1, arg2) => {
-            
-        } 
+      let fn3 = (arg1, arg2) => {};
+      // let fn3 = function (arg1, arg2) {}; 와 동일
 
-        let fn4 = arg1 => {
-            // 매개변수가 1개일 경우 소괄호 생략 가능
-        } 
+      let fn4 = (arg1) => {}; // 매개변수가 1개일 경우 소괄호 생략 가능
+      // let fn4 = (arg1) => {}; 와 동일
 
-        // return개념
-        let mul = function(arg1, arg2) {
-            return arg1 * arg2;
-        }
+      // return
+      let mul = function (arg1, arg2) {
+        return arg1 * arg2;
+      };
 
-        console.log(mul(2,3));
+      console.log(mul(2, 3));
 
-        let fn5 = arg => arg * arg;
-        //중괄호를 생략하고 한 줄로 적으면 암묵적 리턴!을 의미
+      let fn5 = (arg) => arg * arg;
+      //중괄호{}를 생략하고 한 줄로 적으면 암묵적 리턴!을 의미
 
-        console.log(fn5(2));
+      console.log(fn5(2));
     </script>
-    
-</body>
+  </body>
 </html>

@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>type of data</title>
+  </head>
+  <body>
     <script>
-        let str = "안녕하세요"; // 문자형 데이터(string)
-        let num = 123; // 숫자형 데이터(number)
-        let bln = true; // 논리형 데이터(boolean), true/false
-        
-        let non = null; // null data, 빈 값(의도적으로 비우기 위해 넣는 빈 값)
-        let non2; // undefined, 정의되지 않은 값(빈 상태)
-        //NaN : 연산오류 (Not a Number)
-        console.log(str, num, bln, non, non2);
+      let str = '안녕하세요'; // 문자형 데이터(string)
+      let num = 123; // 숫자형 데이터(number)
+      let bln = true; // 논리형 데이터(boolean), true/false
 
-        // 데이터의 형 변환
-        let data1 = "123";
+      let non = null; // null data, 빈 값(의도적으로 비우기 위해 넣는 빈 값)
+      let non2; // undefined, 정의되지 않은 값(빈 상태)
+      //NaN : 연산오류 (Not a Number)
+      console.log(str, num, bln, non, non2);
 
-        // 형태 검사
-        //typeof(data) 데이터의 형태를 검사한 후 리턴해줌
-        console.log(typeof(data1));
+      // 데이터의 형 변환
+      let data1 = '123';
 
-        data1 = Number(data1);
-        console.log(typeof(data1));
+      // 형태 검사
+      //typeof(data) 데이터의 형태를 검사한 후 리턴해줌
+      console.log(typeof data1); // string
 
+      data1 = Number(data1);
+      console.log(typeof data1); //number
     </script>
-</body>
+  </body>
 </html>
