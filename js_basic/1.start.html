@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-</head>
-<body>
-   
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>variable</title>
+  </head>
+  <body>
     <script>
-        // ECMA 모카스트립트 -> 자바스크립트 -> JS표준화 -> ES6(ES2015) 버전을 기준으로 신구를 나뉨
-        // let, const가 이때 추가된 개념
+      // ECMA 모카스트립트 -> 자바스크립트 -> JS표준화 -> ES6(ES2015) 버전을 기준으로 신구를 나뉨
+      // let, const가 이때 추가된 개념
 
-        var a = 123; // 변수선언
-        //변수 : 데이터를 저장하는 공간
-        //var : 변수를 선언하는 키워드 -> 저장공간 발생
-        //a : 변수의 이름(labeling)
-        //= : 저장하다, 할당하다
-        //123 : data
-        //; : 명령을 마침
+      var a = 123; // 변수선언
 
-        //변수 이름 작성규칙
-        //1.숫자로 시작x
-        //2.띄어쓰기x
-        //3.특수문자는 $, _만 가능
-        //4.대소문자를 구별
-        //5.직관적인 이름을 사용!
-        //6.띄어쓰기 표현 방법
-        //  1) snake case : my_first_var
-        //  2) camel case : myFirstVar << 국룰
-        //7.예약어 사용금지
+      // 변수 : 데이터를 저장하는 공간
+      // var : 변수를 선언하는 키워드 -> 저장공간 발생
+      // a : 변수의 이름(labeling)
+      // = : 저장하다, 할당하다
+      // 123 : data
+      // ; : 명령을 마침
 
-        var abc = '가나다라';
-        //변수는 한번에 하나의 데이터만 저장가능
-        console.log(abc);
-        abc = '랄라랄라';
-        console.log(abc);
+      // 변수 이름 작성규칙
+      // 1.숫자로 시작x
+      // 2.띄어쓰기x
+      // 3.특수문자는 $, _만 가능($선택자 << 선택자 변수는 이렇게 많이 씀)
+      // 4.대소문자를 구별
+      // 5.직관적인 이름을 사용!
+      // 6.띄어쓰기 표현 방법
+      //  1) snake case : my_first_var
+      //  2) camel case : myFirstVar << 국룰
+      // 7.예약어 사용금지( _예약어 << 이렇게 쓰기도 함)
 
-        let b = 123;
-            b = '새로운 데이터';
-        console.log(b);
-        
-        const c = 123;
-              c = '새로운 데이터';
-        console.log(c); //에러, 변경할 수 없는 상수
-        
+      // 변수는 한번에 하나의 데이터만 저장가능
+      var abc = '가나다라';
+      console.log(abc);
+
+      abc = '랄라랄라';
+      console.log(abc);
+
+      // let 변수선언
+      let b = 123;
+      b = '새로운 데이터';
+      console.log(b);
+
+      // const 상수선언
+      const c = 123;
+      c = '새로운 데이터';
+      console.log(c); //변경불가
     </script>
-</body>
+  </body>
 </html>
