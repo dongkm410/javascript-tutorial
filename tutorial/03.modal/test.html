@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .container {
+        position: relative;
+      }
+
+      .container p {
+        margin-bottom: 20px;
+      }
+
+      .dimm {
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+
+      .modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px 30px;
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px,
+          rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px,
+          rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px,
+          rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        display: none;
+      }
+
+      .modal h1,
+      p {
+        margin: 0;
+        padding: 0;
+        word-break: break-all;
+      }
+
+      .modal p {
+        margin-bottom: 10px;
+      }
+
+      /* 둘 다 display:none이니까 block이 있는 클래스를 추가만 해주면 같이 동작 */
+      .active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Modal</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae ex ipsam
+        aut asperiores porro repellat modi incidunt inventore praesentium
+        provident animi repudiandae quisquam, nobis autem ratione quidem
+        corporis deleniti est?
+      </p>
+      <button class="showModal">Show Modal</button>
+    </div>
+
+    <div class="dimm"></div>
+
+    <div class="modal">
+      <h1>Lorem, ipsum dolor.</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,
+        laudantium.
+      </p>
+      <button class="close">close</button>
+    </div>
+
+    <script>
+      // 조작대상을 변수에 담음
+      const showModal = document.querySelector('.showModal');
+      const dimm = document.querySelector('.dimm');
+      const modal = document.querySelector('.modal');
+      const close = document.querySelector('.close');
+
+      // showModal버튼을 클릭하면 display:block이 작동
+      showModal.addEventListener('click', function () {
+        dimm.classList.add('active');
+        modal.classList.add('active');
+      });
+
+      // 모달의 close버튼을 클릭하면 .active 클래스를 제거(=display:none)
+      close.addEventListener('click', function () {
+        dimm.classList.remove('active');
+        modal.classList.remove('active');
+      });
+
+      // dimm배경을 클릭하면 .active 클래스를 제거(=display:none)
+      dimm.addEventListener('click', function () {
+        dimm.classList.remove('active');
+        modal.classList.remove('active');
+      });
+    </script>
+  </body>
+</html>

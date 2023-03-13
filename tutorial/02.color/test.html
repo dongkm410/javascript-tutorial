@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="colorName">Color name</h1>
+      <button class="bg">Random BG</button>
+      <button class="hex">Random Hex</button>
+    </div>
+
+    <script>
+      // 지정컬러
+      const colorArr = [
+        'blanchedalmond',
+        'coral',
+        'darkturquoise',
+        'indianred',
+        'mediumseagreen',
+      ];
+
+      // 헥사코드
+      const hexArr = [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        'a',
+        'b',
+        'c',
+        'd',
+        'e',
+        'f',
+      ];
+
+      // 컨트롤할 대상을 변수에 담음
+      const bgColor = document.querySelector('.bg');
+      const hexColor = document.querySelector('.hex');
+      const colorName = document.querySelector('.colorName');
+
+      // 해당 배열을 돌 인덱스를 랜덤하게 추출
+      // 1. 함수로 만들어서 호출하지 않고 >> 2.
+      function getBg() {
+        return Math.floor(Math.random() * colorArr.length);
+      }
+
+      function getHex() {
+        return Math.floor(Math.random() * hexArr.length);
+      }
+
+      // 2. 이벤트 함수 안에서 바로 난수추출 시 1회만 적용됨
+      // 계속 함수를 호출하여 새로운 난수를 가져와야함
+      bgColor.addEventListener('click', function () {
+        const randomGetBg = getBg();
+        document.body.style.background = colorArr[randomGetBg];
+        colorName.textContent = colorArr[randomGetBg];
+      });
+
+      hexColor.addEventListener('click', function () {
+        let hexCode = '#';
+        // 헥사코드는 6자리
+        // for문을 이용해서 함수로 만든 랜덤숫자를 인덱스로 이용
+        // 순차적으로 조합하여 코드를 만듬
+        for (let i = 0; i < 6; i++) {
+          //   hexCode = hexCode + hexArr[getHex()];
+          hexCode += hexArr[getHex()];
+          document.body.style.background = hexCode;
+          colorName.textContent = hexCode;
+        }
+      });
+    </script>
+  </body>
+</html>

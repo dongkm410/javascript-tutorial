@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 오차가 나는 이유 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #eeeeee;
+      }
+
+      .container {
+        width: 600px;
+        margin: 0 auto;
+      }
+
+      .contents {
+        background-color: #3a98b9;
+        color: #fff;
+      }
+
+      h1 {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      h2 {
+        position: relative;
+        cursor: pointer;
+        padding: 15px;
+      }
+
+      .contents {
+        margin-bottom: 15px;
+      }
+
+      .contents h2::after {
+        content: '❔';
+        position: absolute;
+        top: 12px;
+        right: 20px;
+      }
+
+      .contents.active h2::after {
+        content: '❕';
+      }
+
+      .contents .text {
+        border-top: 1px solid #fff;
+        /* 텍스트 컨텐츠 숨기기 */
+        /* 높이를 0으로 만들고 넘치는 요소는 hidden 처리 */
+        height: 0;
+        overflow: hidden;
+        /* 요소에 맞게 패딩처리 */
+        padding: 0 15px;
+        transition: all 0.3s;
+      }
+
+      .contents.active .text {
+        /* 100%로 하면 덜덜 떨림 */
+        /* height: 100%; */
+        height: min-content;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>accordion</h1>
+      <div class="accordion">
+        <div class="contents">
+          <h2 class="title">title1</h2>
+          <p class="text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. A, modi
+            incidunt iste nobis eum eligendi, sint commodi mollitia minima
+            repellendus, quasi consectetur! Earum ipsum vel itaque temporibus
+            iusto! Nemo, quibusdam. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Nulla a reiciendis recusandae dolores optio
+            voluptatem aut provident id eum. Soluta asperiores accusamus odit
+            cum! Reprehenderit molestiae deserunt fugit eaque mollitia! iusto!
+            Nemo, quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Nulla a reiciendis recusandae dolores optio voluptatem aut
+            provident id eum. Soluta asperiores accusamus odit cum!
+            Reprehenderit molestiae deserunt fugit eaque mollitia! iusto! Nemo,
+            quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Nulla a reiciendis recusandae dolores optio voluptatem aut provident
+            id eum. Soluta asperiores accusamus odit cum! Reprehenderit
+            molestiae deserunt fugit eaque mollitia! iusto! Nemo, quibusdam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla a
+            reiciendis recusandae dolores optio voluptatem aut provident id eum.
+            Soluta asperiores accusamus odit cum! Reprehenderit molestiae
+            deserunt fugit eaque mollitia!
+          </p>
+        </div>
+        <div class="contents">
+          <h2>title2</h2>
+          <p class="text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. A, modi
+            incidunt iste nobis eum eligendi, sint commodi mollitia minima
+            repellendus, quasi consectetur! Earum ipsum vel itaque temporibus
+            iusto! Nemo, quibusdam.
+          </p>
+        </div>
+        <div class="contents">
+          <h2>title3</h2>
+          <p class="text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. A, modi
+            incidunt iste nobis eum eligendi, sint commodi mollitia minima
+            repellendus, quasi consectetur! Earum ipsum vel itaque temporibus
+            iusto! Nemo, quibusdam.
+          </p>
+        </div>
+        <div class="contents">
+          <h2>title4</h2>
+          <p class="text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. A, modi
+            incidunt iste nobis eum eligendi, sint commodi mollitia minima
+            repellendus, quasi consectetur! Earum ipsum vel itaque temporibus
+            iusto! Nemo, quibusdam.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const contents = document.querySelectorAll('.contents');
+
+      contents.forEach(function (item, index) {
+        item.addEventListener('click', function () {
+          console.log(this);
+          this.classList.toggle('active');
+
+          // 다른 메뉴가 열였을 때 기존 메뉴 닫히기
+          contents.forEach(function (item2, index2) {
+            if (index !== index2) {
+              item2.classList.remove('active');
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

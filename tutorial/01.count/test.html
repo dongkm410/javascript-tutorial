@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>가격: <span class="price"></span>원</p>
+    <p>수량: <span class="quantity"></span>개</p>
+    <p>합계: <span class="sum"></span>원</p>
+    <button class="minus">-</button>
+    <button>reset</button>
+    <button class="plus">+</button>
+
+    <script>
+      // 조작대상 변수에 담기
+      const price = document.querySelector('.price');
+      const quantity = document.querySelector('.quantity');
+      const sum = document.querySelector('.sum');
+      const btns = document.querySelectorAll('button');
+
+      // 기본값 설정
+      const unit_price = 10000;
+      let unit_quantity = 0;
+
+      // 최초 실행코드
+      price.textContent = unit_price;
+      printSum();
+
+      // 계산함수
+      function printSum() {
+        quantity.textContent = unit_quantity;
+        sum.textContent = unit_price * unit_quantity;
+      }
+
+      // 버튼 전체를 선택자로 하고 forEach를 이용해서 그 중에!
+      // click이 되는 this를 조작
+      // event인자를 받아서 해도 동일
+      btns.forEach(function (item) {
+        //   console.log(item);
+        item.addEventListener('click', function () {
+          if (this.className === 'plus') {
+            unit_quantity++;
+            printSum();
+          } else if (this.className === 'minus') {
+            unit_quantity--;
+            printSum();
+          } else {
+            unit_quantity = 0;
+            printSum();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
