@@ -14,7 +14,7 @@ function removeTodo(e) {
   console.log(e);
   const li = e.target.parentNode;
   li.remove();
-  const newTodos = todos.filter(todo => todo.id !== parseInt(li.id));
+  const newTodos = todos.filter((todo) => todo.id !== parseInt(li.id));
   todos = newTodos;
   console.log(newTodos);
   saveTodo();
@@ -53,7 +53,7 @@ function loadTodo() {
   const localTodos = localStorage.getItem('todos');
   if (localTodos !== null) {
     const parseTodo = JSON.parse(localTodos);
-    parseTodo.forEach(todo => paintTodo(todo.text));
+    parseTodo.forEach((todo) => paintTodo(todo.text));
   }
 }
 

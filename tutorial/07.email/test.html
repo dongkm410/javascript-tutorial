@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        display: flex;
+      }
+
+      .logo_box {
+        width: 30%;
+        height: 100vh;
+        background-color: #86c8bc;
+        color: #fff;
+        padding: 20px 40px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .logo_box h1 {
+        font-size: 50px;
+        margin-bottom: 30px;
+      }
+
+      .logo_box .email {
+        margin-top: auto;
+      }
+
+      .mail_box {
+        width: 100%;
+        position: relative;
+      }
+
+      .inner {
+        width: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .inner h1 {
+        margin-bottom: 20px;
+      }
+
+      form label {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      form input {
+        font-size: 15px;
+        width: 100%;
+        padding: 5px;
+        border: none;
+        border-bottom: 1px solid #86c8bc;
+        margin-bottom: 15px;
+      }
+
+      form input:focus {
+        outline: none;
+      }
+
+      form input::placeholder,
+      textarea::placeholder {
+        color: #c8c8c8;
+        font-family: '맑은 고딕';
+      }
+
+      form textarea {
+        width: 100%;
+        border: 1px solid #86c8bc;
+        padding: 5px;
+        resize: none;
+        margin-bottom: 15px;
+      }
+
+      form textarea:focus {
+        outline: none;
+      }
+
+      form button {
+        padding: 10px 15px;
+        border: 0;
+        background-color: #86c8bc;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .dimm {
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+
+      .dimm i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+      }
+
+      .dimm.active {
+        display: block;
+      }
+
+      .modal {
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 200px;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        /* 모달이 열린 상태에서 뒤에 있는 인풋,버튼이 여전히 활성화 되어있기 때문에 */
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      .modal span {
+        margin-top: 25px;
+      }
+
+      .modal.active {
+        opacity: 1;
+        pointer-events: initial;
+      }
+
+      .modal .close {
+        padding: 5px 15px;
+        border: 0;
+        background-color: #86c8bc;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo_box">
+        <h1>logo</h1>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis
+          provident a recusandae laborum consectetur voluptate praesentium.
+          Maiores possimus voluptatum a corrupti at. Error nobis aliquid
+          perferendis dolore, laudantium non ipsum.
+        </p>
+        <p class="email">dongkyungmin@gmail.com</p>
+      </div>
+      <div class="mail_box">
+        <div class="inner">
+          <h1>메일 보내기</h1>
+          <form class="form">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름" />
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" placeholder="이메일" />
+            <label for="message">내용</label>
+            <textarea
+              name="message"
+              id="message"
+              cols="30"
+              rows="10"
+              placeholder="내용을 입력하세요"
+            ></textarea>
+            <button type="submit" class="send">보내기</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="dimm">
+        <i class="xi-spinner-5 xi-spin xi-4x"></i>
+      </div>
+      <div class="modal">
+        <span>👌</span>
+        <p>
+          메일이 성공적으로<br />
+          발송되었습니다.
+        </p>
+        <button class="close">닫기</button>
+      </div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script>
+      const form = document.querySelector('.form');
+      const name = document.querySelector('#name');
+      const email = document.querySelector('#email');
+      const message = document.querySelector('#message');
+      const dimm = document.querySelector('.dimm');
+      const modal = document.querySelector('.modal');
+      const close = document.querySelector('.close');
+      const inputs = document.querySelectorAll('input');
+
+      function send() {
+        emailjs.init('Xxi3yAxY7oGSiMurU');
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          let templateParams = {
+            //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
+            name: name.value,
+            email: email.value,
+            message: message.value,
+          };
+
+          if (name.value === '' || email.value === '' || message.value === '') {
+            alert('이름, 이메일, 내용을 확인하세요');
+            return;
+          }
+
+          dimm.classList.add('active');
+
+          emailjs
+            .send('service_mikrrus', 'template_ejk9wsj', templateParams)
+            .then(
+              function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+                modal.classList.add('active');
+              },
+              function (error) {
+                console.log('FAILED...', error);
+              }
+            );
+        });
+
+        close.addEventListener('click', function () {
+          dimm.classList.remove('active');
+          modal.classList.remove('active');
+        });
+
+        inputs.forEach(function (item) {
+          item.value = '';
+        });
+        message.value = '';
+      }
+
+      send();
+    </script>
+  </body>
+</html>
